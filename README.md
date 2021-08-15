@@ -1,7 +1,7 @@
 # :zap: Svelte Rollup Crypto
 
 * Svelte library used with Bootstrap & Rollup module bundler to display data from the [CoinGecko Cryptocurrency API](https://www.coingecko.com/en/api)
-* Code from [Fazt Code](https://www.youtube.com/channel/UCMn28O1sQGochG94HdlthbA) with modificationa - see [:clap: Inspiration](#clap-inspiration) below.
+* Code from [Fazt Code](https://www.youtube.com/channel/UCMn28O1sQGochG94HdlthbA) but with code and style modifications - see [:clap: Inspiration](#clap-inspiration) below.
 * **Note:** to open web links in a new window use: _ctrl+click on link_
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/AndrewJBateman/svelte-rollup-crypto?style=plastic)
@@ -27,15 +27,17 @@
 
 * [Svelte onMount function](https://svelte.dev/docs#onMount) used during initialisation, schedules a callback to run after component mounted to DOM
 * Nearly all code is in `App.svelte` file. Minified Bootstrap added in `index.html` header
-* Table is partially responsive
+* Table is partially responsive - future update: drop last 'Market Cap.' column to fit mobile size using @media sizing
+* I added `sitemap.xml` and `robots.txt` files to docs folder for improved Lighthouse SEO score
+* Code modified to add build files to docs (i.e. not 'public' folder) for Github deployment
 
 ## :camera: Screenshots
 
-![Frontend screenshot](./imgs/crypto.png)
+![Frontend screenshot](./imgs/cryptolh.png)
 
 ## :signal_strength: Technologies
 
-* [Svelte v3](https://svelte.dev/) fast front-end UI library with small bundles of highly-optimized vanilla JavaScript & declarative transitions that does not use a virtual DOM
+* [Svelte v3](https://svelte.dev/) fast front-end UI library with small bundles of highly-optimized vanilla JavaScript & declarative transitions. Does not use a virtual DOM.
 * [Bootstrap v5](https://getbootstrap.com/docs/5.0/getting-started/introduction/) framework for styling and components
 * [Rollup v7](https://www.npmjs.com/package/rollup) JS module bundler
 * [Sirv v1](https://github.com/lukeed/sirv) optimized middleware & CLI application for serving static files
@@ -58,55 +60,58 @@
 
 ```svelte
 <table class="table table-light table-hover my-4">
-    <thead>
-      <tr>
-        {#each headings as heading}
-          <th class={heading == "Coin" ? "px-3" : ""}>{heading}</th>
-        {/each}
-      </tr>
-    </thead>
-    <tbody>
-      {#each filteredCoins as coin, i}
+      <thead>
         <tr>
-          <td>
-            <img
-              src={coin.image}
-              alt={coin.name}
-              style="width: 1.5rem"
-              class="img-fluid mx-2"
-            />
-
-            <span class="ms-3 text-muted">
-              {coin.name}
-            </span>
-          </td>
-          <td>
-            {coin.current_price.toLocaleString()}
-          </td>
-          <td
-            class={coin.price_change_24h > 0
-              ? "text-success"
-              : "text-danger"}
-          >
-            {coin.price_change_percentage_24h}
-          </td>
-          <td>
-            {coin.market_cap.toLocaleString()}
-          </td>
+          {#each headings as heading}
+            <th class={heading == "Coin" ? "px-3" : ""}>{heading}</th>
+          {/each}
         </tr>
-      {/each}
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        {#each filteredCoins as coin, i}
+          <tr>
+            <td>
+              <img
+                src={coin.image}
+                alt={coin.name}
+                style="width: 1.5rem"
+                class="img-fluid mx-2"
+              />
+              <span class="ms-3">
+                {coin.name}
+              </span>
+              <span class="text-uppercase">
+                ({coin.symbol})
+              </span>
+            </td>
+            <td>
+              {coin.current_price.toLocaleString()}
+            </td>
+            <td
+              class={coin.price_change_24h > 0
+                ? "bg-success text-white font-weight-bold"
+                : "bg-danger text-white font-weight-bold"}
+            >
+              {coin.price_change_percentage_24h}
+            </td>
+            <td>
+              {coin.market_cap.toLocaleString()}
+            </td>
+          </tr>
+        {/each}
+      </tbody>
+</table>
 ```
 
 ## :cool: Features
 
 * compact build folder - weighs 88KB
+* Deployed with 100% Perfect lighthouse score
 
 ## :clipboard: Status & To-Do List
 
-* Status: Working
-* To-Do: Nothing
+* Status: Working. Deployed to Github Pages
+* To-Do: Add PWA if this is possible in Svelte
 
 ## :clap: Inspiration
 
