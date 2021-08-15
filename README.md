@@ -1,7 +1,7 @@
 # :zap: Svelte Rollup Crypto
 
-* Svelte library used with Bootstrap & Rollup module bundler to display data from a cryptocurrency API
-* Code from [Fazt Code](https://www.youtube.com/channel/UCMn28O1sQGochG94HdlthbA) - see [:clap: Inspiration](#clap-inspiration) below.
+* Svelte library used with Bootstrap & Rollup module bundler to display data from the [CoinGecko Cryptocurrency API](https://www.coingecko.com/en/api)
+* Code from [Fazt Code](https://www.youtube.com/channel/UCMn28O1sQGochG94HdlthbA) with modificationa - see [:clap: Inspiration](#clap-inspiration) below.
 * **Note:** to open web links in a new window use: _ctrl+click on link_
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/AndrewJBateman/svelte-rollup-crypto?style=plastic)
@@ -101,16 +101,16 @@
 
 ## :cool: Features
 
-* compact build files - public folder weighs 88KB
+* compact build folder - weighs 88KB
 
 ## :clipboard: Status & To-Do List
 
 * Status: Working
-* To-Do: Deploy
+* To-Do: Nothing
 
 ## :clap: Inspiration
 
-* [Fazt Code: Svelte Precios Crypto | Svelte & CoinGecko API](https://www.youtube.com/watch?v=uGhiM19d950&t=19s)
+* [Fazt Code: Svelte Precios Crypto | Svelte & CoinGecko API](https://www.youtube.com/watch?v=uGhiM19d950&t=19s) in Spanish
 * [MDN Web Docs: Getting started with Svelte](https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/Svelte_getting_started)
 
 ## :file_folder: License
