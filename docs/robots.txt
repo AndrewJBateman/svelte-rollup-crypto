@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://andrewjbateman.github.io/svelte-rollup-crypto/sitemap.xml

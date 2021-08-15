@@ -28,55 +28,65 @@
 </script>
 
 <main class="container p-4">
-  <h1 class="text-center">CryptoCurrency Prices</h1>
-  <input
-    type="text"
-    placeholder="search cryptos by name or symbol"
-    class="form-control bg-light rounded-0 my-4"
-    bind:value={textSearch}
-    on:keyup={({ target: { value } }) => searchCoin(value)}
-    bind:this={ref}
-  />
-  <table class="table table-light table-striped table-hover my-4">
-    <thead>
-      <tr>
-        {#each headings as heading}
-          <th class={heading == "Coin" ? "px-3" : ""}>{heading}</th>
-        {/each}
-      </tr>
-    </thead>
-    <tbody>
-      {#each filteredCoins as coin, i}
+  <head>
+    <meta
+      name="description"
+      content="Home page shows cryptocurrency details from an API"
+    />
+  </head>
+  <body>
+    <h1 class="text-center">CryptoCurrency Prices</h1>
+    <input
+      type="text"
+      placeholder="search cryptos by name or symbol"
+      class="form-control bg-light rounded-0 my-4"
+      bind:value={textSearch}
+      on:keyup={({ target: { value } }) => searchCoin(value)}
+      bind:this={ref}
+    />
+    <table class="table table-light table-hover my-4">
+      <thead>
         <tr>
-          <td>
-            <img
-              src={coin.image}
-              alt={coin.name}
-              style="width: 1.5rem"
-              class="img-fluid mx-2"
-            />
-            <span class="ms-3 text-muted">
-              {coin.name}
-            </span>
-            <span class="text-muted text-uppercase">
-              ({coin.symbol})
-            </span>
-          </td>
-          <td>
-            {coin.current_price.toLocaleString()}
-          </td>
-          <td
-            class={coin.price_change_24h > 0
-              ? "text-success"
-              : "text-danger"}
-          >
-            {coin.price_change_percentage_24h}
-          </td>
-          <td>
-            {coin.market_cap.toLocaleString()}
-          </td>
+          {#each headings as heading}
+            <th class={heading == "Coin" ? "px-3" : ""}>{heading}</th>
+          {/each}
         </tr>
-      {/each}
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        {#each filteredCoins as coin, i}
+          <tr>
+            <td>
+              <img
+                src={coin.image}
+                alt={coin.name}
+                style="width: 1.5rem"
+                class="img-fluid mx-2"
+              />
+              <span class="ms-3">
+                {coin.name}
+              </span>
+              <span class="text-uppercase">
+                ({coin.symbol})
+              </span>
+            </td>
+            <td>
+              {coin.current_price.toLocaleString()}
+            </td>
+            <td
+              class={coin.price_change_24h > 0
+                ? "bg-success text-white font-weight-bold"
+                : "bg-danger text-white font-weight-bold"}
+            >
+              {coin.price_change_percentage_24h}
+            </td>
+            <td>
+              {coin.market_cap.toLocaleString()}
+            </td>
+          </tr>
+        {/each}
+      </tbody>
+    </table>
+  </body>
 </main>
+
+º
